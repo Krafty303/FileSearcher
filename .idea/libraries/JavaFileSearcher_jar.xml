@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="JavaFileSearcher_jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/JavaFileSearcher_jar/File Searcher.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/JavaFileSearcher_jar/JavaFileSearcher.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

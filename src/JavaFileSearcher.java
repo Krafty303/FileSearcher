@@ -16,7 +16,7 @@ public class JavaFileSearcher extends JFrame {
     // Initialize the components
     // Swing components
     private final JTextField fileNameField = new JTextField(20);
-    private final JTextField destinationField = new JTextField(20);
+    //private final JTextField destinationField = new JTextField(20);
     private final JTextField entryField = new JTextField(50);
     private final JButton searchButton = new JButton("Rechercher");
     //private JButton selectButton;
@@ -77,7 +77,7 @@ public class JavaFileSearcher extends JFrame {
 
                     if (foundFiles.size() > 0) {
                         appendMessage(foundFiles.size() + " fichiers trouvés.");
-                        //appendMessage(foundFiles.size() + "Voulez-vous les voir, les ouvrir ou les afficher dans l'explorateur de fichier ? (vous tapez : voir / ouvrir / afficher) Vous pouvez également recommencer une recherche avec le bouton Rechercher.");
+                        //appendMessage(foundFiles.size() + "Voulez-vous les voir, les ouvrir ou les afficher dans l'explorateur de fichier (vous tapez : voir / ouvrir / afficher) ? Vous pouvez également recommencer une recherche avec le bouton Rechercher.");
 
                         //String entry = waitEntry();
 //
@@ -125,7 +125,8 @@ public class JavaFileSearcher extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        destinationField.setEnabled(false);
+        //destinationField.setEnabled(false);
+        destinationFieldItem.setEnabled(false);
         entryField.setEnabled(false);
         entryButton.setEnabled(false);
         messageArea.setEditable(false);
@@ -169,8 +170,8 @@ public class JavaFileSearcher extends JFrame {
 
         optionsPanel.add(advancedButton);
         optionsPanel.add(copyCheckBox);
-        optionsPanel.add(new JLabel("Destination :"));
-        optionsPanel.add(destinationField);
+        //optionsPanel.add(new JLabel("Destination :"));
+        //optionsPanel.add(destinationField);
         optionsPanel.add(searchMustMatchesCheckBox);
 
         tabbedPane.addTab("Options", optionsPanel);
@@ -199,9 +200,9 @@ public class JavaFileSearcher extends JFrame {
         advancedModeItem.addItemListener(itemEvent -> toggleAdvancedMode());
 
         JRadioButtonMenuItem copyOptionItem = new JRadioButtonMenuItem("Copier les fichiers dans un dossier");
-        advancedModeItem.addItemListener(itemEvent -> toggleCopyOption());
+        copyOptionItem.addItemListener(itemEvent -> toggleCopyOption());
 
-        destinationFieldItem.addActionListener(actionEvent -> JOptionPane.showInputDialog("Veuillez entrer le "));
+        destinationFieldItem.addActionListener(actionEvent -> destination = JOptionPane.showInputDialog("Veuillez entrer la destination des fichiers trouvés."));
 
         optionsMenu.add(advancedModeItem);
         optionsMenu.add(copyOptionItem);
@@ -235,9 +236,9 @@ public class JavaFileSearcher extends JFrame {
     private void startSearch() {
         // Get the file name and destination from the text fields
         searchInput = fileNameField.getText().trim();
-        if (copyOption) {
-            destination = destinationField.getText().trim();
-        }
+        //if (copyOption) {
+        //    destination = destinationField.getText().trim();
+        //}
 
         // Check if they are valid
         if (searchInput.isEmpty()) {
@@ -335,7 +336,7 @@ public class JavaFileSearcher extends JFrame {
         copyOption = !copyOption;
 
         // Enable or disable the destination field accordingly
-        destinationField.setEnabled(copyOption);
+        //destinationField.setEnabled(copyOption);
         destinationFieldItem.setEnabled(copyOption);
     }
 
